@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import authRoutes from "./routes/auth.routes.js";
-
+import jobRoutes from "./routes/job.routes.js";
 const app = express();
 
 /* -------------------- Security Middleware -------------------- */
@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/jobs", jobRoutes);
 /* -------------------- Export App -------------------- */
 
 export default app;
