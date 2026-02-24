@@ -1,0 +1,42 @@
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
+import authRoutes from "./routes/auth.routes.js";
+
+const app = express();
+
+/* -------------------- Security Middleware -------------------- */
+
+// Helmet (secure HTTP headers)
+app.use(helmet());
+
+// Rate Limiting (basic protection)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100,
+});
+app.use(limiter);
+
+// CORS
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
+// Body Parser
+app.use(express.json());
+
+/* -------------------- Routes -------------------- */
+
+app.get("/", (req, res) => {
+  res.json({ message: "Job Application Tracker API running..." });
+});
+
+app.use("/api/auth", authRoutes);
+
+/* -------------------- Export App -------------------- */
+
+export default app;
