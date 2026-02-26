@@ -1,6 +1,6 @@
 import express from "express";
-import { register, login } from "../controllers/auth.controller.js";
-
+import { register, login,getMe } from "../controllers/auth.controller.js";
+import { protect } from "../middlewares/auth.Middleware.js";
 const router = express.Router();
 
 /**
@@ -9,7 +9,7 @@ const router = express.Router();
  * @access  Public
  */
 router.post("/register", register);
-
+router.get("/me", protect, getMe);
 /**
  * @route   POST /api/auth/login
  * @desc    Login user
