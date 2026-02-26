@@ -4,6 +4,7 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import authRoutes from "./routes/auth.routes.js";
 import jobRoutes from "./routes/job.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 const app = express();
 
 /* -------------------- Security Middleware -------------------- */
@@ -37,6 +38,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
+app.use("/api/admin", adminRoutes);
 /* -------------------- Export App -------------------- */
 
 export default app;
