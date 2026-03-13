@@ -1,6 +1,6 @@
 import { registerUser, loginUser } from "../services/auth.service.js";
 import User from "../models/user.model.js";
-import generateOTP from "../utils/generateOTP.js";
+import {generateOTP} from "../utils/generateOTP.js";
 import { sendOtpEmail } from "../utils/sendEmail.js";
 /**
  * Register Controller
