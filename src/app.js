@@ -22,7 +22,7 @@ app.use(limiter);
 // CORS
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://job-application-tracker-fr-git-c5384d-sarthak-saini07s-projects.vercel.app/",
     credentials: true,
   })
 );
