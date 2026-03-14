@@ -55,8 +55,8 @@ const storage = new CloudinaryStorage({
   params: async (req, file) => {
     return {
       folder: "jobsy_cvs",
-      resource_type: "raw", // Bypass Cloudinary strictly blocking PDF delivery
-      public_id: `${Date.now()}_${file.originalname}`,
+      resource_type: "auto", 
+      public_id: `${Date.now()}_${file.originalname.split(".")[0]}`,
     };
   },
 });
